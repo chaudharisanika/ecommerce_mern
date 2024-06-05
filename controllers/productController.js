@@ -1,10 +1,11 @@
 import productModel from "../models/productModel.js";
 import categoryModel from "../models/categoryModel.js";
-// import orderModel from "../models/orderModel.js";
+import orderModel from "../models/orderModel.js";
 
 //file system
 import fs from "fs";
 import slugify from "slugify";
+
 import braintree from "braintree";
 import dotenv from "dotenv";
 
@@ -308,7 +309,7 @@ export const realtedProductController = async (req, res) => {
   }
 };
 
-// get prdocyst by catgory
+// get prdocust by catgory
 export const productCategoryController = async (req, res) => {
   try {
     const category = await categoryModel.findOne({ slug: req.params.slug });
@@ -327,7 +328,6 @@ export const productCategoryController = async (req, res) => {
     });
   }
 };
-
 //payment gateway api
 //token
 export const braintreeTokenController = async (req, res) => {

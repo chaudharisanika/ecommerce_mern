@@ -19,6 +19,7 @@ import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import formidable from "express-formidable";
 
 const router = express.Router();
+const stripe = require("stripe")(process.env.STRIPE_SECRET)
 
 //routes
 router.post(
@@ -69,9 +70,15 @@ router.get("/product-category/:slug", productCategoryController);
 
 // //payments routes
 // //token
-router.get("/braintree/token", braintreeTokenController);
+// router.get("/braintree/token", braintreeTokenController);
 
 // //payments
-router.post("/braintree/payment", requireSignIn, brainTreePaymentController);
+// router.post("/braintree/payment", requireSignIn, brainTreePaymentController);
 
+//stripe
+router.post("/create-checkout-session",async(req,res)=>{
+  const {products} = req.body;
+
+  
+})
 export default router;
