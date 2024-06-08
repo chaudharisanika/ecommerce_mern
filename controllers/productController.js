@@ -1,22 +1,26 @@
 import productModel from "../models/productModel.js";
 import categoryModel from "../models/categoryModel.js";
 import orderModel from "../models/orderModel.js";
+import braintree from "braintree";
+
 
 //file system
 import fs from "fs";
 import slugify from "slugify";
 
-import braintree from "braintree";
+// import braintree from "braintree";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-//payment gateway braintree
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+
+// payment gateway braintree
 var gateway = new braintree.BraintreeGateway({
   environment: braintree.Environment.Sandbox,
-  merchantId: process.env.BRAINTREE_MERCHANT_ID,
-  publicKey: process.env.BRAINTREE_PUBLIC_KEY,
-  privateKey: process.env.BRAINTREE_PRIVATE_KEY,
+  merchantId: "24z4tgqnxs7hjs7w",
+  publicKey: "rf3vn9j8mrjkwtp8",
+  privateKey: "381b3d3e98ac403ceb6883bc3bb0b3ec",
 });
 
 export const createProductController = async (req, res) => {
@@ -309,7 +313,7 @@ export const realtedProductController = async (req, res) => {
   }
 };
 
-// get prdocust by catgory
+// get product by category
 export const productCategoryController = async (req, res) => {
   try {
     const category = await categoryModel.findOne({ slug: req.params.slug });
@@ -328,13 +332,15 @@ export const productCategoryController = async (req, res) => {
     });
   }
 };
-//payment gateway api
+
+//payment
 //token
 export const braintreeTokenController = async (req, res) => {
   try {
     gateway.clientToken.generate({}, function (err, response) {
       if (err) {
         res.status(500).send(err);
+        console.log(err);
       } else {
         res.send(response);
       }

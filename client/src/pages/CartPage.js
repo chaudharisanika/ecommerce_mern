@@ -3,13 +3,11 @@ import Layout from "./../components/Layout/Layout";
 import { useCart } from "../context/cart";
 import { useAuth } from "../context/auth";
 import { useNavigate } from "react-router-dom";
-import DropIn from "braintree-web";
-// import { AiFillWarning } from "react-icons/ai";
+import DropIn from "braintree-web-drop-in-react";
+import { AiFillWarning } from "react-icons/ai";
 import axios from "axios";
 import toast from "react-hot-toast";
 import "../styles/CartStyles.css";
-
-import {loadStripe} from '@stripe/stripe-js'
 
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
@@ -48,59 +46,37 @@ const CartPage = () => {
   };
 
   //get payment gateway token
-  // const getToken = async () => {
-  //   try {
-  //     const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/braintree/token`);
-  //     setClientToken(data?.clientToken);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getToken();
-  // }, [auth?.token]);
+  const getToken = async () => {
+    try {
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/braintree/token`);
+      setClientToken(data?.clientToken);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getToken();
+  }, [auth?.token]);
 
   //handle payments
-  // const handlePayment = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const { nonce } = await instance.requestPaymentMethod();
-  //     const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/product/braintree/payment`, {
-  //       nonce,
-  //       cart,
-  //     });
-  //     setLoading(false);
-  //     localStorage.removeItem("cart");
-  //     setCart([]);
-  //     navigate("/dashboard/user/orders");
-  //     toast.success("Payment Completed Successfully ");
-  //   } catch (error) {
-  //     console.log(error);
-  //     setLoading(false);
-  //   }
-  // };
-  const makePayment = async ()=>{
-       const stripe = await loadStripe("pk_test_51POAS1Et9qSQZXhfLnS1kRa6rGK7jwfecti4gI0T1jHAjQVNA0DlV7HzRFFI4lggNwpzBLW7Hc2t4fYfR9sV5IDE00aKgJoPAx")
-       const body = {
-        products : cart
-       }
-       const headers = {
-        "Content-type" : "application.json"
-       }
-       const response = await fetch(`${process.env.REACT_APP_API}/create-checkout-session`,{
-        method:"POST",
-        headers:headers,
-        body:JSON.stringify(body)
-       })
-       const session = await response.json();
-
-       const result = stripe.redirectToCheckout({
-        sessionId:session.id
-       });
-       if(result.error){
-        console.log(result.error)
-       }
-  }
+  const handlePayment = async () => {
+    try {
+      setLoading(true);
+      const { nonce } = await instance.requestPaymentMethod();
+      const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/product/braintree/payment`, {
+        nonce,
+        cart,
+      });
+      setLoading(false);
+      localStorage.removeItem("cart");
+      setCart([]);
+      navigate("/dashboard/user/orders");
+      toast.success("Payment Completed Successfully ");
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
   return (
     <Layout>
       <div className=" cart-page">
@@ -192,18 +168,29 @@ const CartPage = () => {
                 </div>
               )}
               <div className="mt-2">
-                
+                {!clientToken || !auth?.token || !cart?.length ? (
+                  ""
+                ) : (
                   <>
-                    
+                    <DropIn
+                      options={{
+                        authorization: clientToken,
+                        paypal: {
+                          flow: "vault",
+                        },
+                      }}
+                      onInstance={(instance) => setInstance(instance)}
+                    />
 
                     <button
                       className="btn btn-primary"
-                      onClick={makePayment}
+                      onClick={handlePayment}
+                      // disabled={loading || !instance || !auth?.user?.address}
                     >
-                      Make Payment
+                      {loading ? "Processing ...." : "Make Payment"}
                     </button>
                   </>
-                 
+                )}
               </div>
             </div>
           </div>

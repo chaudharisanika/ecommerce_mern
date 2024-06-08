@@ -1,6 +1,12 @@
 .product-details {
     margin-top: 100px !important;
   }
+
+  .product-details img{
+    width: 300px;
+    margin-left: 200px;
+
+  }
   
   .product-details-info {
     display: flex;
@@ -12,7 +18,14 @@
   .product-details-info h6 {
     margin-bottom: 20px !important;
   }
+
+  .product-details .btn{
+    background-color: rgb(96, 78, 70);
+  }
   
+  .similar-products{
+    margin-left: 80px;
+  }
   .similar-products .card {
     background-color: rgba(128, 128, 128, 0.097);
     width: 18rem;
@@ -23,9 +36,12 @@
     flex-direction: row;
     justify-content: space-between;
   }
-  
+  .card-name-price .btn{
+    background-color: rgb(252, 198, 177);
+    border: none;
+  }
   .similar-products .card-price {
-    color: green;
+    color: black;
     font-weight: bold;
   }
   .similar-products button {

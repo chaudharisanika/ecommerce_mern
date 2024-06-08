@@ -1,5 +1,33 @@
 .banner-img {
     margin-top: 60px;
+    height: 80vh;
+  }
+
+  .outerbox{
+    width: 100%;
+    height: 15vh;
+    /* border: 1px solid black; */
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .outerbox .innerbox{
+    width: 20%;
+    height: 100%;
+    /* border: 1px solid black; */
+    background-color: rgb(254, 214, 198);
+  }
+  .outerbox .innerbox h4{
+    margin-top: 20px;
+    margin-left: 20px;
+    font-weight: 500;
+    font-family: "Playfair Display", serif;
+  }
+  .outerbox .innerbox p{
+    margin-top: -10px;
+    margin-left: 20px;
+    /* font-family: "Playfair Display", serif; */
   }
   
   .home-page h1 {
@@ -11,6 +39,7 @@
     display: flex;
     flex-wrap: wrap;
   }
+  
   .home-page .card {
     background-color: rgba(128, 128, 128, 0.097);
     width: 18rem;
@@ -21,8 +50,14 @@
     justify-content: space-between;
   }
   
+  .home-page .card-name-price .more{
+    background-color: rgb(96, 78, 70);
+    border: none;
+    color: white;
+  }
+
   .home-page .card-price {
-    color: green;
+    color: rgb(27, 14, 8);
     font-weight: bold;
   }
   .home-page button {
@@ -33,6 +68,7 @@
     font-size: 14px;
     font-weight: bold;
   }
+
   
   .home-page .card-text {
     color: rgb(90, 89, 89);
@@ -45,12 +81,20 @@
   .home-page .card-img-top {
     height: 300px !important;
   }
+  .col-md-9 h1{
+     color:black;
+  }
+
+  .adjust{
+    display: flex;
+    justify-content: space-evenly;
+  }
   /* ==================
   filters
   ============== */
   .filters h4 {
     margin-top: 100px;
-    color: gray !important;
+    color: black !important;
     border-bottom: 1px solid rgba(128, 128, 128, 0.337);
   }
   
@@ -75,7 +119,7 @@
   }
   
   .loadmore {
-    color: green;
+    color: rgb(255, 173, 141);
     font-weight: bold;
     font-size: 20px !important;
   }

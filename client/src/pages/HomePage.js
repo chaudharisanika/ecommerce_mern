@@ -6,7 +6,7 @@ import { useCart } from "../context/cart";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Layout from "./../components/Layout/Layout";
-// import { AiOutlineReload } from "react-icons/ai";
+import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
 
 const HomePage = () => {
@@ -110,12 +110,32 @@ const HomePage = () => {
     <Layout title={"ALl Products - Best offers "}>
       {/* banner image */}
       <img
-        src="/images/banner.png"
+        src="/images/front.png"
         className="banner-img"
         alt="bannerimage"
         width={"100%"}
       />
       {/* banner image */}
+      {/* four cards */}
+      <div class="outerbox">
+        <div class="innerbox">
+          <h4>Free delivery</h4>
+          <p>For all Items</p>
+        </div>
+        <div class="innerbox">
+          <h4>Return and refund</h4>
+          <p>Money back guarantee</p>
+        </div>
+        <div class="innerbox">
+          <h4>Support 24/7</h4>
+          <p>Contact anytime</p>
+        </div>
+        <div class="innerbox">
+          <h4>Free delivery</h4>
+          <p>For all Items</p>
+        </div>
+      </div>
+      {/* four cards */}
       <div className="container-fluid row mt-3 home-page">
         <div className="col-md-3 filters">
           <h4 className="text-center">Filter By Category</h4>
@@ -151,7 +171,7 @@ const HomePage = () => {
         </div>
         <div className="col-md-9 ">
           <h1 className="text-center">All Products</h1>
-          <div className="d-flex flex-wrap">
+          <div className="d-flex flex-wrap adjust">
             {products?.map((p) => (
               <div className="card m-2" key={p._id}>
                 <img
@@ -174,7 +194,7 @@ const HomePage = () => {
                   </p>
                   <div className="card-name-price">
                     <button
-                      className="btn btn-info ms-1"
+                      className="btn btn-info ms-1 more"
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
                       More Details
@@ -211,7 +231,7 @@ const HomePage = () => {
                 ) : (
                   <>
                     {" "}
-                    {/* Loadmore <AiOutlineReload /> */}
+                    Loadmore <AiOutlineReload />
                   </>
                 )}
               </button>
