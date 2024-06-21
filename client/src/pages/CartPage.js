@@ -79,26 +79,23 @@ const CartPage = () => {
   };
   return (
     <Layout>
-      <div className=" cart-page">
+      <div className="cart-page">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="text-center bg-light p-2 mb-1">
-              {!auth?.user
-                ? "Hello Guest"
-                : `Hello  ${auth?.token && auth?.user?.name}`}
+            <p className="text-center p-2 mb-1">
               <p className="text-center">
                 {cart?.length
-                  ? `You Have ${cart.length} items in your cart ${
+                  ? `You have ${cart.length} items in your cart ${
                       auth?.token ? "" : "please login to checkout !"
                     }`
                   : " Your Cart Is Empty"}
               </p>
-            </h1>
+            </p>
           </div>
         </div>
-        <div className="container ">
-          <div className="row ">
-            <div className="col-md-7  p-0 m-0">
+        <div className="container outer">
+          <div className="row">
+            <div className="col-md-7  p-0 m-0 cartp">
               {cart?.map((p) => (
                 <div className="row card flex-row" key={p._id}>
                   <div className="col-md-4">
@@ -137,7 +134,7 @@ const CartPage = () => {
                     <h4>Current Address</h4>
                     <h5>{auth?.user?.address}</h5>
                     <button
-                      className="btn btn-outline-warning"
+                      className="btn"
                       onClick={() => navigate("/dashboard/user/profile")}
                     >
                       Update Address
@@ -148,14 +145,14 @@ const CartPage = () => {
                 <div className="mb-3">
                   {auth?.token ? (
                     <button
-                      className="btn btn-outline-warning"
+                      className="btn"
                       onClick={() => navigate("/dashboard/user/profile")}
                     >
                       Update Address
                     </button>
                   ) : (
                     <button
-                      className="btn btn-outline-warning"
+                      className="btn"
                       onClick={() =>
                         navigate("/login", {
                           state: "/cart",
@@ -183,7 +180,7 @@ const CartPage = () => {
                     />
 
                     <button
-                      className="btn btn-primary"
+                      className="btn"
                       onClick={handlePayment}
                       // disabled={loading || !instance || !auth?.user?.address}
                     >

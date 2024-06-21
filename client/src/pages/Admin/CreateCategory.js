@@ -5,6 +5,8 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import CategoryForm from "../../components/Form/CategoryForm";
 import { Modal } from "antd";
+import "../../styles/Admindashboard.css"
+
 
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
@@ -118,7 +120,7 @@ const CreateCategory = () => {
                         <td key={c._id}>{c.name}</td>
                         <td>
                           <button
-                            className="btn btn-primary ms-2"
+                            className="btn ms-2 custom"
                             onClick={() => {
                               setVisible(true);
                               setUpdatedName(c.name);

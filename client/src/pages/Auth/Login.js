@@ -40,10 +40,10 @@ const Login = () => {
     }
   };
   return (
-    <Layout title="Register - Ecommer App">
-      <div className="form-container " style={{ minHeight: "90vh" }}>
+    <Layout title="Register - Ecommerce App">
+      <div className="form-container" style={{ minHeight: "90vh" }}>
         <form onSubmit={handleSubmit}>
-          <h4 className="title">LOGIN FORM</h4>
+          <h4 className="title">LOGIN</h4>
 
           <div className="mb-3">
             <input
@@ -53,7 +53,7 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
-              placeholder="Enter Your Email "
+              placeholder="Email"
               required
             />
           </div>
@@ -64,7 +64,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="form-control"
               id="exampleInputPassword1"
-              placeholder="Enter Your Password"
+              placeholder="Password"
               required
             />
           </div>
@@ -84,6 +84,9 @@ const Login = () => {
             LOGIN
           </button>
         </form>
+        <div class="imagel">
+          <img src="/images/front.png" alt=""></img>
+        </div>
       </div>
     </Layout>
   );

@@ -46,7 +46,7 @@ const ForgotPasssword = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
-              placeholder="Enter Your Email "
+              placeholder="Email "
               required
             />
           </div>
@@ -57,7 +57,7 @@ const ForgotPasssword = () => {
               onChange={(e) => setAnswer(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
-              placeholder="Enter Your favorite Sport Name "
+              placeholder="Favorite Sport Name "
               required
             />
           </div>
@@ -68,7 +68,7 @@ const ForgotPasssword = () => {
               onChange={(e) => setNewPassword(e.target.value)}
               className="form-control"
               id="exampleInputPassword1"
-              placeholder="Enter Your Password"
+              placeholder="Password"
               required
             />
           </div>
@@ -77,6 +77,9 @@ const ForgotPasssword = () => {
             RESET
           </button>
         </form>
+        <div class="imagef">
+          <img src="/images/front.png" alt=""></img>
+        </div>
       </div>
     </Layout>
   );

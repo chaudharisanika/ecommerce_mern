@@ -5,6 +5,8 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { Select } from "antd";
 import { useNavigate } from "react-router-dom";
+import "../../styles/Admindashboard.css"
+
 
 const { Option } = Select;
 
@@ -90,7 +92,7 @@ const CreateProduct = () => {
                 ))}
               </Select>
               <div className="mb-3">
-                <label className="btn btn-outline-secondary col-md-12">
+                <label style={{backgroundColor:"white"}} className="btn btn-outline-secondary col-md-12">
                   {photo ? photo.name : "Upload Photo"}
                   <input
                     type="file"
@@ -166,7 +168,7 @@ const CreateProduct = () => {
                 </Select>
               </div>
               <div className="mb-3">
-                <button className="btn btn-primary" onClick={handleCreate}>
+                <button className="btn custom" onClick={handleCreate}>
                   CREATE PRODUCT
                 </button>
               </div>

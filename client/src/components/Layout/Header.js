@@ -36,8 +36,8 @@ const Header = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link to="/" className="navbar-brand">
-              🛒 ClickCart
+            <Link to="/" className="navbar-brand" style={{fontSize:"30px",fontFamily:"serif"}}>
+            🛍️ QuickBuy
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <SearchInput />
