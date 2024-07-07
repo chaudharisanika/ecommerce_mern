@@ -31,7 +31,7 @@
   }
   
   .home-page h1 {
-    color: gray;
+    color: black;
     font-family: "Playfair Display", serif;
   }
   
@@ -51,11 +51,14 @@
   }
   
   .home-page .card-name-price .more{
-    background-color: rgb(96, 78, 70);
+    background-color: rgb(66, 64, 64);
     border: none;
     color: white;
   }
-
+  
+  .home-page .card-name-price .add{
+    background-color: rgb(168, 116, 96);
+  }
   .home-page .card-price {
     color: rgb(27, 14, 8);
     font-weight: bold;
@@ -119,7 +122,20 @@
   }
   
   .loadmore {
-    color: rgb(255, 173, 141);
+    color: black;
     font-weight: bold;
     font-size: 20px !important;
+  }
+
+  .category-filter{
+    /* margin-left: 400px; */
+    margin-top: 30px;
+    font-size: xx-large;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .category-filter1{
+    font-size: large;
+    font-weight: 500;
+    
   }

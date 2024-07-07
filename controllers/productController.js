@@ -18,9 +18,9 @@ process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 // payment gateway braintree
 var gateway = new braintree.BraintreeGateway({
   environment: braintree.Environment.Sandbox,
-  merchantId: "24z4tgqnxs7hjs7w",
-  publicKey: "rf3vn9j8mrjkwtp8",
-  privateKey: "381b3d3e98ac403ceb6883bc3bb0b3ec",
+  merchantId: process.env.BRAINTREE_MERCHANT_ID,
+  publicKey: process.env.BRAINTREE_PUBLIC_KEY,
+  privateKey: process.env.BRAINTREE_PRIVATE_KEY,
 });
 
 export const createProductController = async (req, res) => {

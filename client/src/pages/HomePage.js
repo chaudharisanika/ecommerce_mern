@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Checkbox, Radio } from "antd";
+import { Checkbox, Radio ,Modal,Button} from "antd";
 import { Prices } from "../components/Prices";
 import { useCart } from "../context/cart";
 import axios from "axios";
@@ -19,6 +19,19 @@ const HomePage = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  //showing filters
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   //get all cat
   const getAllCategory = async () => {
@@ -136,10 +149,30 @@ const HomePage = () => {
         </div>
       </div>
       {/* four cards */}
-      <div className="container-fluid row mt-3 home-page">
-        <div className="col-md-3 filters">
-          <h4 className="text-center">Filter By Category</h4>
-          <div className="d-flex flex-column">
+      <div className="container-fluid home-page">
+        <div className="filters">
+        <Button style={{backgroundColor:"rgb(168, 116, 96)",color:"white",marginLeft:"1280px",width:"120px"}}onClick={showModal}>
+        Apply Filters
+      </Button>
+      <Modal
+        title=""
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={[
+          <Button key="back" onClick={handleCancel}>
+            Cancel
+          </Button>,
+          <Button key="reset" style={{backgroundColor:"rgb(107, 22, 22)",color:"white"}} onClick={() => window.location.reload()}>
+            Reset Filters
+          </Button>,
+          <Button key="submit" style={{backgroundColor:"rgb(168, 116, 96)",color:"white"}} onClick={handleOk}>
+            Apply
+          </Button>,
+        ]}
+      >
+        <h4 className="text-center">Filter By Category</h4>
+        <div className="d-flex flex-column">
             {categories?.map((c) => (
               <Checkbox
                 key={c._id}
@@ -147,29 +180,28 @@ const HomePage = () => {
               >
                 {c.name}
               </Checkbox>
+              
             ))}
           </div>
-          {/* price filter */}
+        <div className="d-flex flex-column">
           <h4 className="text-center mt-4">Filter By Price</h4>
-          <div className="d-flex flex-column">
-            <Radio.Group onChange={(e) => setRadio(e.target.value)}>
-              {Prices?.map((p) => (
-                <div key={p._id}>
-                  <Radio value={p.array}>{p.name}</Radio>
-                </div>
-              ))}
-            </Radio.Group>
-          </div>
-          <div className="d-flex flex-column">
-            <button
-              className="btn btn-danger"
-              onClick={() => window.location.reload()}
-            >
+          <Radio.Group onChange={(e) => setRadio(e.target.value)}>
+            {Prices?.map((p) => (
+              <div key={p._id}>
+                <Radio value={p.array}>{p.name}</Radio>
+              </div>
+            ))}
+          </Radio.Group>
+          <div className="d-flex flex-column mt-2">
+            {/* <Button type="danger" onClick={() => window.location.reload()}>
               RESET FILTERS
-            </button>
+            </Button> */}
           </div>
         </div>
-        <div className="col-md-9 ">
+      </Modal>
+        </div>
+        {/* All products */}
+        <div className="">
           <h1 className="text-center">All Products</h1>
           <div className="d-flex flex-wrap adjust">
             {products?.map((p) => (
@@ -183,9 +215,9 @@ const HomePage = () => {
                   <div className="card-name-price">
                     <h5 className="card-title">{p.name}</h5>
                     <h5 className="card-title card-price">
-                      {p.price.toLocaleString("en-US", {
+                      {p.price.toLocaleString("en-IN", {
                         style: "currency",
-                        currency: "USD",
+                        currency: "INR",
                       })}
                     </h5>
                   </div>
@@ -200,7 +232,7 @@ const HomePage = () => {
                       More Details
                     </button>
                     <button
-                      className="btn btn-dark ms-1"
+                      className="btn btn-dark ms-1 add"
                       onClick={() => {
                         setCart([...cart, p]);
                         localStorage.setItem(

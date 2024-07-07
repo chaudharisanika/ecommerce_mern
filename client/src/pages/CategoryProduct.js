@@ -47,24 +47,26 @@ const CategoryProduct = () => {
                     <div className="card-name-price">
                       <h5 className="card-title">{p.name}</h5>
                       <h5 className="card-title card-price">
-                        {p.price.toLocaleString("en-US", {
+                        {p.price.toLocaleString("en-IN", {
                           style: "currency",
-                          currency: "USD",
+                          currency: "INR",
                         })}
                       </h5>
                     </div>
                     <p className="card-text ">
                       {p.description.substring(0, 60)}...
                     </p>
-                    <div className="card-name-price">
+                    <div className="card-name-price more">
                       <button
-                        className="btn btn-info ms-1"
+                        className="btn ms-1"
                         onClick={() => navigate(`/product/${p.slug}`)}
+                        style={{backgroundColor:"rgb(66, 64, 64)",color:"white"}}
                       >
                         More Details
                       </button>
                       <button
                     className="btn btn-dark ms-1"
+                    style={{backgroundColor:"rgb(168, 116, 96)"}}
                     onClick={() => {
                       setCart([...cart, p]);
                       localStorage.setItem(

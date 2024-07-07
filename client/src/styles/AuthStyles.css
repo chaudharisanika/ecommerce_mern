@@ -10,28 +10,43 @@
     /* background-color: #434343; */
     /* background-color: #ffdee9;
     background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%); */
+    
   }
   
   .form-container form {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: 
+    0 -5px 5px -5px rgba(0, 0, 0, 0.3), 
+    -5px 0 5px -5px rgba(0, 0, 0, 0.3),  
+    0 5px 5px -5px rgba(0, 0, 0, 0.3);  
     padding: 20px;
-    background-color: rgb(249, 216, 203);
+    background-color: rgb(231, 208, 198);
+
   }
   
   .form-container .imagel img{
     width:400px;
-    height:280px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  }
+    height:278px;
+    box-shadow: 
+    0 -5px 5px -5px rgba(0, 0, 0, 0.35),  
+    5px 0 5px -5px rgba(0, 0, 0, 0.35),   
+    0 5px 5px -5px rgba(0, 0, 0, 0.35);  
+}
+  
   .form-container .imager img{
     width:500px;
     height:434px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: 
+    0 -5px 5px -5px rgba(0, 0, 0, 0.35),  
+    5px 0 5px -5px rgba(0, 0, 0, 0.35),   
+    0 5px 5px -5px rgba(0, 0, 0, 0.35);  
   }
   .form-container .imagef img{
     width:400px;
     height:280px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: 
+    0 -5px 5px -5px rgba(0, 0, 0, 0.35),  
+    5px 0 5px -5px rgba(0, 0, 0, 0.35),   
+    0 5px 5px -5px rgba(0, 0, 0, 0.35);  
   }
   .form-container form .title {
     text-align: center;
